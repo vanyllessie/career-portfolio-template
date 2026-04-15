@@ -1,29 +1,24 @@
 {
-  "name": "John Doe",
-  "photoUrl": "favicon.svg",
-  "intro": "A brief, compelling introduction about who you are and what you do. Mention your core philosophy, your passion for building digital products, and your drive for creating efficient, high-impact solutions.",
-  "introHtml": "A brief, compelling introduction about who you are and what you do. Mention your core <span class='text-white font-bold'>philosophy</span>, your passion for building digital products, and your drive for creating <span class='text-white font-bold'>efficient</span>, <span class='text-white font-bold'>high-impact</span> solutions.",
-  "webpageTitle": "John Doe",
-  "resumeUrl": "https://example-files.online-convert.com/document/pdf/example.pdf",
+  "name": "Geovanni Lessie",
+  "photoUrl": "GL.svg",
+  "introHtml": "I build scalable systems, high-performance frontend architectures and digital products for the modern web.",
+  "intro": "I build scalable systems, high-performance frontend architectures and digital products for the modern web.",
+  "webpageTitle": "Geovanni Lessie",
+  "resumeUrl": "https://drive.google.com/file/d/1jL0UmlT29GFm7oq3xeMFb6FQqABzib76/view?usp=sharing",
   "socials": [
     {
-      "name": "GitHub",
-      "url": "https://github.com/[YOUR_USER_NAME]",
-      "icon": "mdi:github"
-    },
-    {
       "name": "LinkedIn",
-      "url": "https://linkedin.com/in/[YOUR_USER_NAME]",
+      "url": "https://www.linkedin.com/in/geovanni-lessie/",
       "icon": "mdi:linkedin"
     },
     {
       "name": "Email",
-      "url": "mailto:your-mail@example.com",
+      "url": "geovanni.lessie@gmail.com",
       "icon": "mdi:email"
     },
     {
       "name": "Whatsapp",
-      "url": "https://wa.me/[YOUR_WHATSAPP_NUMBER]",
+      "url": "https://wa.me/525551977754",
       "icon": "mdi:whatsapp"
     }
   ]

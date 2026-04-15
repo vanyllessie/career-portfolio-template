@@ -1,0 +1,398 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/nav.astro";
+import projectsData from "../../data/projects.json";
+
+export async function getStaticPaths() {
+  const projectsWithSlugs = projectsData.filter((project) => project.slug);
+  
+  return projectsWithSlugs.map((project) => {
+    return {
+      params: { slug: project.slug },
+      props: { project },
+    };
+  });
+}
+
+const { project } = Astro.props;
+
+// Use the first image as the cover image
+const coverImage = project.images && project.images.length > 0 ? project.images[0] : '/placeholder.jpeg';
+
+// Map milestones if they exist
+const milestones = project.milestones || [];
+---
+
+<Layout title={`${project.title} | Portfolio`}>
+  <Nav />
+  
+  {/* HERO SECTION (Adapted from Home) */}
+  <section class="flex flex-col items-center justify-center pt-20 pb-10 md:pt-30 md:pb-25 gap-4 min-h-[40vh] text-center px-4">
+    <div class="reveal-content" style="animation-delay: 100ms;">
+      <span class="text-accent text-sm md:text-base font-mono uppercase tracking-widest">{project.category}</span>
+    </div>
+    
+    <div class="max-w-4xl mx-auto relative z-0 reveal-content" style="animation-delay: 200ms;">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white tracking-tight leading-tight">
+        {project.title}
+      </h1>
+      
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        {project.tech && project.tech.map((t: string) => (
+          <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs md:text-sm text-gray-300">
+            {t}
+          </span>
+        ))}
+      </div>
+      
+      <p class="mt-8 text-gray font-body text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+        {project.description}
+      </p>
+    </div>
+  </section>
+
+  {/* FULLSIZE IMAGE SEPARATOR */}
+  <section class="w-full relative mx-auto mb-16 md:mb-24 reveal-content px-4 md:px-8 max-w-7xl" style="animation-delay: 300ms;">
+    <div class="aspect-video relative rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(var(--accent-rgb),0.15)] border border-white/10 group/slider">
+      <div class={`w-full h-full relative ${project.images && project.images.length > 1 ? 'image-slider-full' : ''}`} data-total={project.images ? project.images.length : 1}>
+        {project.images && project.images.length > 0 ? (
+          project.images.map((img: string, index: number) => (
+            <img 
+              src={`/${img}`} 
+              alt={`${project.title} screenshot ${index + 1}`}
+              onerror="this.onerror=null;this.src='/placeholder.jpeg';"
+              class={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${index === 0 ? 'opacity-100 z-0' : 'opacity-0 z-[-1]'}`}
+            />
+          ))
+        ) : (
+          <img 
+            src="/placeholder.jpeg" 
+            alt={`${project.title} highlight`} 
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+      </div>
+      <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none z-10"></div>
+
+      {/* Dot indicators */}
+      {project.images && project.images.length > 1 && (
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2 slider-dots">
+          {project.images.map((_: string, index: number) => (
+            <button
+              class={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer slider-dot ${index === 0 ? 'bg-white scale-125' : 'bg-white/40'}`}
+              data-dot-index={index}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Prev / Next arrows */}
+      {project.images && project.images.length > 1 && (
+        <>
+          <button
+            class="slider-prev absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-accent/50 text-white rounded-full p-2 transition-all duration-200 opacity-0 group-hover/slider:opacity-100 cursor-pointer"
+            aria-label="Previous image"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button
+            class="slider-next absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 border border-white/20 hover:border-accent/50 text-white rounded-full p-2 transition-all duration-200 opacity-0 group-hover/slider:opacity-100 cursor-pointer"
+            aria-label="Next image"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </>
+      )}
+    </div>
+  </section>
+
+  {/* MILESTONES SECTION (Adapted from Career) */}
+  {milestones.length > 0 && (
+    <section class="py-10 px-4 md:px-0 max-w-6xl mx-auto overflow-hidden mb-20">
+      <div class="container mx-auto">
+        <div class="mb-16 text-center md:text-left reveal-content" style="animation-delay: 400ms;">
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-4">
+            <span class="text-accent">/</span> Project Milestones
+          </h2>
+          <p class="text-gray font-body text-sm max-w-md mx-auto md:mx-0">
+            The journey and phases to bring this project to life.
+          </p>
+        </div>
+
+        <div class="relative">
+          {/* Vertical Line*/}
+          <div class="absolute left-2 md:left-1/2 md:-translate-x-1/2 top-5 bottom-0 w-0.5 bg-linear-to-b from-accent via-white/10 to-transparent"></div>
+
+          {/* MOBILE VIEW */}
+          <div class="md:hidden space-y-8">
+            {milestones.map((item: any, index: number) => (
+              <div class="relative pl-6">
+                <div class="scroll-stat absolute left-0 top-1 z-10">
+                    <div class={`w-4 h-4 rounded-full border-4 border-[#0a0a0a] 
+                                ${index === 0 ? 'bg-accent shadow-[0_0_15px_#00ff41] animate-pulse' : 'bg-gray-600'}`}>
+                    </div>
+                  </div>
+                
+                <div class="scroll-stat bg-white/5 border border-white/10 p-4 rounded-2xl">
+                  <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
+                  <h3 class="text-xl font-heading font-bold text-white mt-1">{item.role}</h3>
+                  <p class="text-gray-400 text-sm mb-4">{item.company}</p>
+                  <p class="text-gray-500 font-body text-sm leading-relaxed mb-4">{item.description}</p>
+                  
+                  {/* Milestone Image */}
+                  <div class="mb-4 rounded-xl overflow-hidden border border-white/10 cursor-pointer group milestone-img-container" data-image={item.image ? `/${item.image}` : (project.images && project.images.length > 0 ? `/${project.images[0]}` : '/placeholder.jpeg')}>
+                    <img 
+                      src={item.image ? `/${item.image}` : (project.images && project.images.length > 0 ? `/${project.images[0]}` : '/placeholder.jpeg')} 
+                      alt={`${item.period} milestone`}
+                      class="w-full h-32 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    />
+                  </div>
+
+                  <div class="flex flex-wrap gap-2">
+                    {item.skills && item.skills.map((skill: string) => (
+                      <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* DESKTOP VIEW */}
+          <div class="hidden md:block space-y-4">
+            {milestones.map((item: any, index: number) => (
+              <div class="relative grid grid-cols-2">
+                {/* Center Dot */}
+                  <div class="scroll-stat absolute left-1/2 -translate-x-1/2 top-1 z-10">
+                    <div class={`w-4 h-4 rounded-full border-4 border-[#0a0a0a] 
+                                ${index === 0 ? 'bg-accent shadow-[0_0_15px_#00ff41] animate-pulse' : 'bg-gray-600'}`}>
+                    </div>
+                  </div>
+
+                {/* Left Side (even items) */}
+                <div class="md:px-6 md:py-0">
+                  {index % 2 === 0 ? (
+                    <div class="scroll-stat bg-white/5 border border-white/10 p-6 rounded-2xl text-right hover:border-accent/30 transition-all group">
+                      <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
+                      <h3 class="text-xl font-heading font-bold text-white mt-1">{item.role}</h3>
+                      <p class="text-gray text-sm mb-4">{item.company}</p>
+                      <p class="text-gray-400 font-body text-sm leading-relaxed mb-4">{item.description}</p>
+                      
+                      {/* Milestone Image */}
+                      <div class="mb-4 rounded-xl overflow-hidden border border-white/10 cursor-pointer group milestone-img-container" data-image={item.image ? `/${item.image}` : (project.images && project.images.length > 0 ? `/${project.images[0]}` : '/placeholder.jpeg')}>
+                        <img 
+                          src={item.image ? `/${item.image}` : (project.images && project.images.length > 0 ? `/${project.images[0]}` : '/placeholder.jpeg')} 
+                          alt={`${item.period} milestone`}
+                          class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                        />
+                      </div>
+
+                      <div class="flex flex-wrap gap-2 justify-end">
+                        {item.skills && item.skills.map((skill: string) => (
+                          <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : <div class="h-full pointer-events-none"></div>}
+                </div>
+
+                {/* Right Side (odd items) */}
+                <div class="md:px-6 md:py-0">
+                  {index % 2 !== 0 ? (
+                    <div class="scroll-stat bg-white/5 border border-white/10 p-6 rounded-2xl hover:border-accent/30 transition-all group">
+                      <span class="text-accent font-mono text-xs tracking-widest uppercase">{item.period}</span>
+                      <h3 class="text-xl font-heading font-bold text-white mt-1">{item.role}</h3>
+                      <p class="text-gray text-sm mb-4">{item.company}</p>
+                      <p class="text-gray-400 font-body text-sm leading-relaxed mb-4">{item.description}</p>
+                      
+                      {/* Milestone Image */}
+                      <div class="mb-4 rounded-xl overflow-hidden border border-white/10 cursor-pointer group milestone-img-container" data-image={item.image ? `/${item.image}` : (project.images && project.images.length > 0 ? `/${project.images[0]}` : '/placeholder.jpeg')}>
+                        <img 
+                          src={item.image ? `/${item.image}` : (project.images && project.images.length > 0 ? `/${project.images[0]}` : '/placeholder.jpeg')} 
+                          alt={`${item.period} milestone`}
+                          class="w-full h-40 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                        />
+                      </div>
+
+                      <div class="flex flex-wrap gap-2">
+                        {item.skills && item.skills.map((skill: string) => (
+                          <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300 group-hover:border-accent/20">{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : <div class="h-full pointer-events-none"></div>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* FULLSCREEN IMAGE MODAL */}
+  <div id="imageModal" class="fixed inset-0 z-[100] bg-black/90 hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+    <button id="closeModal" class="absolute top-6 right-6 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-colors cursor-pointer z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <img id="modalImg" src="" alt="Enlarged view" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300" />
+  </div>
+</Layout>
+
+<style>
+  .reveal-content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes revealIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Initial state of the card */
+  .scroll-stat {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Revealed state while scrolling*/
+  .scroll-stat.reveal {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+</style>
+
+<script>
+  function initFullSliders() {
+    const sliders = document.querySelectorAll('.image-slider-full');
+    
+    sliders.forEach(slider => {
+      const images = slider.querySelectorAll('img');
+      if (images.length <= 1) return;
+
+      // Find sibling dots and arrows (they are in the slider's parent)
+      const container = slider.parentElement;
+      const dots = container ? container.querySelectorAll('.slider-dot') : [];
+      const prevBtn = container ? container.querySelector('.slider-prev') : null;
+      const nextBtn = container ? container.querySelector('.slider-next') : null;
+
+      let currentIndex = 0;
+      let timer: ReturnType<typeof setInterval>;
+
+      function goTo(newIndex: number) {
+        // Hide current
+        images[currentIndex].classList.remove('opacity-100', 'z-0');
+        images[currentIndex].classList.add('opacity-0', 'z-[-1]');
+        if (dots[currentIndex]) {
+          dots[currentIndex].classList.remove('bg-white', 'scale-125');
+          dots[currentIndex].classList.add('bg-white/40');
+        }
+
+        // Move to next
+        currentIndex = (newIndex + images.length) % images.length;
+
+        // Show next
+        images[currentIndex].classList.remove('opacity-0', 'z-[-1]');
+        images[currentIndex].classList.add('opacity-100', 'z-0');
+        if (dots[currentIndex]) {
+          dots[currentIndex].classList.add('bg-white', 'scale-125');
+          dots[currentIndex].classList.remove('bg-white/40');
+        }
+      }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(currentIndex + 1), 3500);
+      }
+
+      // Wire up dots
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { goTo(i); startTimer(); });
+      });
+
+      // Wire up arrows
+      if (prevBtn) prevBtn.addEventListener('click', () => { goTo(currentIndex - 1); startTimer(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { goTo(currentIndex + 1); startTimer(); });
+
+      startTimer();
+    });
+  }
+
+  function revealCards() {
+    const cards = document.querySelectorAll('.scroll-stat');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('reveal');
+          }, (index % 3) * 150);
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -10px 0px'
+    });
+
+    cards.forEach(card => observer.observe(card));
+  }
+
+  function initImageModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg') as HTMLImageElement;
+    const closeBtn = document.getElementById('closeModal');
+    const triggers = document.querySelectorAll('.milestone-img-container');
+
+    if (!modal || !modalImg || !closeBtn) return;
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const imgSrc = trigger.getAttribute('data-image');
+        if (imgSrc) modalImg.src = imgSrc;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Small delay to allow display:flex to apply before changing opacity for animation
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modalImg.classList.remove('scale-95');
+        }, 10);
+      });
+    });
+
+    const closeModal = () => {
+      modal.classList.add('opacity-0');
+      modalImg.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  // Runs on initial load
+  revealCards();
+  initFullSliders();
+  initImageModal();
+  
+  // Necessary for Astro View Transitions
+  document.addEventListener('astro:after-swap', () => {
+    revealCards();
+    initFullSliders();
+    initImageModal();
+  });
+</script>

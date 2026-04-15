@@ -35,9 +35,16 @@ const isSlider = project.images.length > 1;
         <span class="text-accent text-[10px] uppercase tracking-widest font-bold">{project.category}</span>
         <h3 class="text-xl font-heading font-bold text-white mt-1">{project.title}</h3>
       </div>
-      <a href={project.link} target="_blank" class="text-white/40 hover:text-accent transition-colors">
-        <Icon name="mdi:open-in-new" class="w-6 h-6" />
-      </a>
+      {project.link && (
+        <a 
+          href={project.link} 
+          target={project.link.startsWith('http') ? '_blank' : '_self'}
+          rel={project.link.startsWith('http') ? 'noopener noreferrer' : ''}
+          class="text-white/40 hover:text-accent transition-colors"
+        >
+          <Icon name={project.link.startsWith('http') ? 'mdi:open-in-new' : 'mdi:arrow-right'} class="w-6 h-6" />
+        </a>
+      )}
     </div>
 
     <p class="text-gray-400 text-sm font-body line-clamp-3">

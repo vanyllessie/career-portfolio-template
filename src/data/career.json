@@ -1,26 +1,85 @@
 [
   {
-    "company": "Demo Company",
-    "role": "Lead Software Engineer",
-    "period": "Oct 2025 - Present",
+    "company": "FpAlpha Inc.",
+    "role": "Principal Frontend Engineer",
+    "period": "Sep 2023 - Present",
     "type": "Full time job",
-    "description": "Leading cross-platform mobile development using Flutter and FastAPI. Focused on scalable system design and high-performance data processing.",
-    "skills": ["Leading", "Collaboration"]
+    "description": "Architecting a robust micro-frontend and service-based permission system for B2B scaling. Standardized development through a proprietary UI Kit and CI/CD automation, reducing delivery cycles by 50%.",
+    "skills": [
+      "Angular",
+      "NgRx",
+      "Storybook",
+      "CI/CD",
+      "Micro-frontends",
+      "RxJS"
+    ]
   },
   {
-    "company": "Demo Company",
-    "role": "Full-stack Developer",
-    "period": "Sep 2023 - Sep 2025",
+    "company": "Maxitransfers LLC.",
+    "role": "Senior Frontend Developer",
+    "period": "Sep 2021 - Sep 2023",
     "type": "Full time job",
-    "description": "Specializing in Business Research Methods and Strategic HRM. Applying analytical frameworks to human capital management.",
-    "skills": ["React", "Node.js", "PostgreSQL", "Docker"]
+    "description": "Led the digital transformation of core fintech platforms from desktop to web. Implemented a complex NgRx-based state architecture with WebSockets to ensure real-time data integrity for millions of dollars in daily transactions.",
+    "skills": [
+      "Angular",
+      "NgRx",
+      "WebSockets",
+      "Fintech",
+      "AWS",
+      "Product Strategy"
+    ]
   },
   {
-    "company": "Demo University of Tech",
-    "role": "BSc in Computer Science",
-    "period": "Jun 2020 - Jun 2024",
-    "type": "Student",
-    "description": "Specializing in Business Research Methods and Strategic HRM. Applying analytical frameworks to human capital management.",
-    "skills": ["C++", "OOP", "Problem Solving"]
+    "company": "Abraxas Group",
+    "role": "Technical Product Manager",
+    "period": "2019 - 2021",
+    "type": "Full time job",
+    "description": "Executed technical feasibility analysis and roadmap prioritization based on data quality gaps. Optimized high-value data asset exploitation to maximize ROI and prevent development waste.",
+    "skills": [
+      "Product Management",
+      "Data Strategy",
+      "Agile",
+      "ROI",
+      "Business Intelligence"
+    ]
+  },
+  {
+    "company": "Insaite",
+    "role": "Data Product Owner",
+    "period": "2016 - 2019",
+    "type": "Full time job",
+    "description": "Defined AI-driven product strategies for industrial and retail sectors. Designed descriptive and predictive dashboards to optimize enterprise decision-making through advanced data segmentation.",
+    "skills": [
+      "AI Strategy",
+      "Product Ownership",
+      "Predictive Analytics",
+      "User Research"
+    ]
+  },
+  {
+    "company": "Huli Health",
+    "role": "Web Engineer",
+    "period": "2 years",
+    "type": "Full time job",
+    "description": "Developed and maintained core features for a Health Tech SaaS platform[cite: 35]. Focused on delivering high-quality web experiences for healthcare professionals and patients[cite: 35].",
+    "skills": [
+      "Web Development",
+      "HealthTech",
+      "SaaS",
+      "Frontend Engineering"
+    ]
+  },
+  {
+    "company": "Yogome Inc.",
+    "role": "Web Developer",
+    "period": "1.5 years",
+    "type": "Full time job",
+    "description": "Developed an extensive suite of educational web games[cite: 36]. Focused on creating engaging, high-performance interactive experiences for a global user base[cite: 36].",
+    "skills": [
+      "Game Development",
+      "JavaScript",
+      "Educational Tech",
+      "Interactivity"
+    ]
   }
 ]

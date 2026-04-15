@@ -1,20 +1,233 @@
 [
   {
-    "title": "Awesome Website",
-    "description": "A high-performance, SEO-optimized web application built with modern frameworks to showcase technical expertise.",
-    "images": ["astro-01.webp", "astro-02.jpeg"],
-    "tech": ["Astro", "Tailwind"],
-    "platforms": ["web"],
-    "link": "#",
-    "category": "Published Website"
+    "title": "B2B Enterprise Scaling Engine",
+    "description": "Architected the structural pivot from a B2C model to a robust B2B Enterprise platform. This strategic evolution involved re-engineering core state management and security layers to support complex corporate hierarchies, resulting in a product capable of serving massive financial institutions with thousands of internal users.",
+    "images": [
+      "projects/fp4.png",
+      "projects/fp1.png",
+      "projects/fp2.png",
+      "projects/fp3.png"
+    ],
+    "tech": [
+      "Angular 20",
+      "NgRx",
+      "Storybook",
+      "Unit Testing",
+      "CI/CD Automation",
+      "Micro-frontends"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "link": "/projects/b2b-enterprise",
+    "slug": "b2b-enterprise",
+    "milestones": [
+      {
+        "period": "Strategic Pivot: B2C to B2B Hierarchy",
+        "role": "Lead Frontend Architect",
+        "company": "FpAlpha Inc.",
+        "description": "The primary challenge was transforming a single-user product into a multi-layered corporate engine. I made the strategic decision to implement a Redux-based architecture (NgRx) to manage the global state, ensuring a single source of truth for the complex 'Matrix/Office/User' hierarchy. This was crucial because B2B operations require absolute data consistency across various organizational nodes. I spearheaded the implementation of a cross-cutting permission system that was injected into every layer and feature of the application, ensuring that granular access control was enforced not just at the UI level, but within guards, interceptors, and business logic services.",
+        "skills": [
+          "NgRx",
+          "State Management Architecture",
+          "B2B Scalability",
+          "Permission Systems"
+        ],
+        "image": "subpages/fp1.png"
+      },
+      {
+        "period": "Enterprise Component Homogenization",
+        "role": "Principal Engineer",
+        "company": "FpAlpha Inc.",
+        "description": "To scale development, I led a massive modernization effort, upgrading the core from Angular 8 to version 20 to leverage standalone components and improved performance. The centerpiece was the homogenization of the UI layer: we developed a proprietary UI-Kit, documenting every atom and molecule in Storybook to align engineering with design. I mandated strict unit testing for every UI-Kit component to ensure that the building blocks of our enterprise platform were indestructible. This decision was strategic: by decoupling UI from business logic and ensuring 100% test coverage in the kit, we eliminated visual regressions and allowed the team to build complex features using pre-validated, high-performance components.",
+        "skills": [
+          "Angular 20 Upgrade",
+          "Component Homogenization",
+          "Unit Testing",
+          "Storybook",
+          "Design Systems"
+        ],
+        "image": "subpages/fp2.png"
+      },
+      {
+        "period": "SDLC Optimization & Quality Gates",
+        "role": "Principal Engineer",
+        "company": "FpAlpha Inc.",
+        "description": "Recognizing that rapid B2B growth often leads to technical debt, I re-engineered our SDLC (Software Development Life Cycle). I implemented automated CI/CD pipelines with integrated quality gates, including Husky for pre-commit linting and automated test runs. This strategic focus on automation was designed to shift quality 'to the left', identifying issues before they reached QA. By enforcing these strict technical standards, we successfully reduced the delivery cycle by 50% and slashed QA iterations from 8 to just 2 per feature. This wasn't just a technical win; it was a business accelerator that allowed the product team to hit market windows with unprecedented precision and confidence.",
+        "skills": [
+          "CI/CD Automation",
+          "SDLC Optimization",
+          "GitLab CI",
+          "Technical Leadership"
+        ],
+        "image": "subpages/fp3.png"
+      }
+    ],
+    "category": "Professional Architecture"
   },
   {
-    "title": "Demo Mobile App",
-    "description": "A high-performance mobile application built with modern frameworks to showcase technical expertise.",
-    "images": ["astro-02.jpeg", "#"],
-    "tech": ["Flutter", "Dart", "REST API"],
-    "platforms": ["apple-ios", "android"],
-    "link": "#",
-    "category": "Hobby"
+    "title": "Fintech Digital Transformation",
+    "description": "Orchestrated the critical migration of a legacy desktop money transfer platform to a high-performance web architecture. This digital transformation was designed to eliminate deployment friction and provide real-time financial data integrity for tens of thousands of users processing millions of dollars monthly.",
+    "images": [
+      "projects/maxi1.png"
+    ],
+    "tech": [
+      "Angular",
+      "NgRx",
+      "WebSockets",
+      "AWS",
+      "GitHub Actions",
+      "Husky"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "link": "/projects/fintech-transformation",
+    "slug": "fintech-transformation",
+    "milestones": [
+      {
+        "period": "Strategic Infrastructure Pivot",
+        "role": "Senior Frontend Developer",
+        "company": "Maxitransfers LLC.",
+        "description": "I spearheaded the strategic move to deprecate a restrictive desktop environment in favor of a modern Web App, fundamentally changing the product's distribution model. By implementing a robust CI/CD pipeline with GitHub Actions, I reduced the software deployment cycle from a 30-day manual process to immediate, zero-downtime availability. This decision was driven by the need for business agility, allowing the company to respond to market changes and regulatory updates in hours rather than months, significantly increasing competitive advantage.",
+        "skills": [
+          "Digital Transformation",
+          "CI/CD Strategy",
+          "Infrastructure Planning"
+        ],
+        "image": "subpages/maxi1.png"
+      },
+      {
+        "period": "High-Concurrency State Architecture",
+        "role": "Senior Frontend Developer",
+        "company": "Maxitransfers LLC.",
+        "description": "To handle the extreme complexity of real-time money transfers, I engineered a sophisticated state management system using NgRx. In a fintech environment, data race conditions can lead to critical financial errors; therefore, I implemented a Redux-based architecture to ensure a predictable, immutable state across the entire transaction lifecycle. This architectural choice provided a single source of truth that successfully managed tens of thousands of daily users, ensuring that every cent was accounted for and every transfer state was synchronized perfectly across multiple UI modules.",
+        "skills": [
+          "NgRx",
+          "Redux Architecture",
+          "Financial Data Integrity",
+          "Complex State Management"
+        ],
+        "image": "subpages/maxi2.png"
+      },
+      {
+        "period": "Real-Time Synchronization & Security",
+        "role": "Senior Frontend Developer",
+        "company": "Maxitransfers LLC.",
+        "description": "Recognizing that latency is the enemy of financial trust, I integrated WebSockets to enable bi-directional, real-time communication between the client and the server. This allowed for instant updates on exchange rates and transfer statuses without manual refreshes, drastically improving the user experience and operational transparency. Parallel to this, I implemented a rigorous security layer using JWT and automated quality gates (Husky/Linting) to protect sensitive financial data. The result was a platform that combined the responsiveness of a desktop app with the accessibility and security of modern web standards.",
+        "skills": [
+          "WebSockets",
+          "Real-time Systems",
+          "JWT Security",
+          "Performance Optimization"
+        ],
+        "image": "subpages/maxi3.png"
+      }
+    ],
+    "category": "Fintech"
+  },
+  {
+    "title": "Navora: AI-Driven Learning",
+    "description": "A research-led mobile application designed to optimize reading efficiency and information retention. By merging cognitive psychology principles with Generative AI, Navora transforms how users interact with complex information, serving as a personal case study for high-impact educational technology.",
+    "images": [
+      "projects/na1.png",
+      "projects/na2.png",
+      "projects/na3.png"
+    ],
+    "tech": [
+      "Flutter",
+      "Generative AI (LLMs)",
+      "Node.js",
+      "Google Cloud",
+      "Rive",
+      "Firebase"
+    ],
+    "platforms": [
+      "apple-ios",
+      "android"
+    ],
+    "link": "/projects/navora-ai",
+    "slug": "navora-ai",
+    "milestones": [
+      {
+        "period": "Conceptualization: Psychology Meets Tech",
+        "role": "Product Founder & Architect",
+        "company": "Personal Research Project",
+        "description": "I initiated this project to bridge the gap between cognitive psychology and digital learning[cite: 40]. The strategic core was to design an experience that respects mental load and focuses on deep processing[cite: 40]. I mapped out user flows based on linguistic structures and information retention theories, ensuring that every technical decision—from the choice of Flutter for a seamless UI to the backend architecture—served a specific pedagogical purpose. This phase was about defining a product that doesn't just display text, but actively facilitates learning through intentional design.",
+        "skills": [
+          "Cognitive Psychology",
+          "Product Strategy",
+          "UX Design",
+          "Flutter"
+        ],
+        "image": "subpages/na1.png"
+      },
+      {
+        "period": "AI-Augmented Content Engine",
+        "role": "Lead Developer",
+        "company": "Personal Research Project",
+        "description": "I strategically integrated Generative AI (LLMs) not as a gimmick, but as a core utility for automated content prototyping and personalization[cite: 41, 38]. By implementing prompt engineering and serverless functions, I created a system that can summarize, simplify, and generate retention-focused exercises in real-time. This decision allowed for a 'lean' content strategy where the AI acts as an invisible tutor, adapting the material to the user's reading level[cite: 41]. The focus was on optimizing development velocity using AI tools to build unit tests and documentation, allowing me to maintain high code quality as a solo developer.",
+        "skills": [
+          "Generative AI",
+          "Prompt Engineering",
+          "Node.js",
+          "Serverless Architecture"
+        ],
+        "image": "subpages/na2.png"
+      },
+      {
+        "period": "Gamification & Interaction Design",
+        "role": "Full-stack Developer",
+        "company": "Personal Research Project",
+        "description": "To increase user engagement without compromising the serious goal of reading efficiency, I implemented a gamified ecosystem using Rive for high-performance animations[cite: 42]. I made the strategic choice to use an 'ads-for-lives' monetization model restricted only to game levels, keeping the core 'Practice' utility direct and friction-free. This balanced approach ensures that the educational value remains the priority. The architecture uses Firebase for real-time lead collection and user progress tracking, creating a data-informed feedback loop that allows for continuous refinement of the learning algorithm based on actual user behavior.",
+        "skills": [
+          "Flutter",
+          "Rive Animation",
+          "Firebase Hosting",
+          "Monetization Strategy"
+        ],
+        "image": "subpages/na3.png"
+      }
+    ],
+    "category": "Innovation & Research"
+  },
+  {
+    "title": "HealthTech SaaS Platform",
+    "description": "Engineered core features for a specialized healthcare platform. Focused on building secure, high-performance web experiences tailored for medical professionals and patient management.",
+    "images": [
+      "projects/hu1.png",
+      "projects/hu2.jpg"
+    ],
+    "tech": [
+      "Frontend Engineering",
+      "SaaS",
+      "Security",
+      "Web Performance"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "link": "https://www.hulihealth.com/en",
+    "category": "Healthcare"
+  },
+  {
+    "title": "Interactive Educational Suite",
+    "description": "Developed a comprehensive suite of educational web games. Created engaging, high-performance interactive experiences designed for global user engagement and learning.",
+    "images": [
+      "projects/yg1.jpg",
+      "projects/yg2.png",
+      "projects/yg3.jpg"
+    ],
+    "tech": [
+      "Game Development",
+      "JavaScript",
+      "Animation",
+      "UX Design"
+    ],
+    "platforms": [
+      "web"
+    ],
+    "link": "https://impactalpha.com/mexicos-yogome-raises-27m-for-multilingual-learning-materials/",
+    "category": "EdTech"
   }
 ]
