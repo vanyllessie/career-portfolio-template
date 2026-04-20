@@ -1,8 +1,23 @@
 [
   {
+    "company": "CERTERO Estudio / División DevOps & Software",
+    "role": "Principal Frontend Engineer",
+    "period": "Dic 2024 - Present",
+    "type": "Full time job",
+    "description": "Led the architectural modernization of core banking and fintech platforms, transitioning legacy systems to micro-frontends using the strangler-fig pattern and ArgoCD for GitOps CI/CD. Implemented high-availability, real-time transactional flows for SPEI and CoDi under strict PCI DSS, SOC 2, and CNBV regulations. Orchestrated the consolidation of corporate Design Systems and integrated AI-augmented workflows to accelerate technical delivery while maintaining 100% compliance and code quality.",
+    "skills": [
+      "Angular/Vue 3",
+      "Open Banking",
+      "Storybook",
+      "CI/CD",
+      "Jest",
+      "RxJS"
+    ]
+  },
+  {
     "company": "FpAlpha Inc.",
     "role": "Principal Frontend Engineer",
-    "period": "Sep 2023 - Present",
+    "period": "Feb 2023 - Dic 2024",
     "type": "Full time job",
     "description": "Architecting a robust micro-frontend and service-based permission system for B2B scaling. Standardized development through a proprietary UI Kit and CI/CD automation, reducing delivery cycles by 50%.",
     "skills": [
@@ -17,7 +32,7 @@
   {
     "company": "Maxitransfers LLC.",
     "role": "Senior Frontend Developer",
-    "period": "Sep 2021 - Sep 2023",
+    "period": "Sep 2021 - Feb 2023",
     "type": "Full time job",
     "description": "Led the digital transformation of core fintech platforms from desktop to web. Implemented a complex NgRx-based state architecture with WebSockets to ensure real-time data integrity for millions of dollars in daily transactions.",
     "skills": [
